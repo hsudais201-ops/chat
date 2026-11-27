@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#075e54">
+  <title>Chat — Simple private messaging</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section id="login-screen" class="login-screen">
+      <div class="brand-mark">C</div>
+      <h1>Welcome to Chat</h1>
+      <p>Simple messaging. Just choose a username to get started.</p>
+      <form id="login-form">
+        <label for="username">Your username</label>
+        <input id="username" name="username" minlength="3" maxlength="24" autocomplete="username" placeholder="e.g. alex_123" required>
+        <button type="submit">Continue</button>
+      </form>
+      <small>Use 3–24 letters, numbers, or underscores.</small>
+      <p id="login-error" class="error" role="alert"></p>
+    </section>
+
+    <section id="chat-screen" class="chat-screen hidden">
+      <aside class="sidebar">
+        <header class="sidebar-header">
+          <div><div class="brand-small">C</div><strong>Chat</strong></div>
+          <button id="logout-button" class="icon-button" title="Sign out" aria-label="Sign out">↪</button>
+        </header>
+        <div class="me-card"><span class="avatar" id="my-avatar">?</span><div><strong id="my-name"></strong><small>You're signed in</small></div></div>
+        <div class="search-wrap"><input id="user-search" placeholder="Find people by username…" autocomplete="off"></div>
+        <div class="section-label">PEOPLE</div>
+        <div id="user-list" class="user-list"><p class="muted pad">Search for someone to start chatting.</p></div>
+      </aside>
+      <section class="conversation">
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon">✉</div><h2>Your messages</h2><p>Choose someone from the list to start a conversation.</p>
+        </div>
+        <div id="active-chat" class="active-chat hidden">
+          <header class="conversation-header">
+            <button id="back-button" class="icon-button back-button" aria-label="Back to people">←</button>
+            <span id="peer-avatar" class="avatar">?</span>
+            <div><strong id="peer-name"></strong><small>Chat on Chat</small></div>
+          </header>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <form id="message-form" class="composer">
+            <input id="message-input" maxlength="4000" placeholder="Write a message…" autocomplete="off" required>
+            <button type="submit" aria-label="Send message">➤</button>
+          </form>
+          <p id="chat-error" class="error chat-error" role="alert"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
